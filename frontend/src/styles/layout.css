@@ -1,9 +1,11 @@
+/* ========== HEADER ========== */
 .header {
-    background: var(--white);
+    background: #fff;
     border-bottom: 1px solid #eee;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 100; /* Đảm bảo header luôn nổi lên trên cùng */
+    width: 100%;
 }
 
 .header-inner {
@@ -11,7 +13,6 @@
     align-items: center;
     justify-content: space-between;
     height: 80px;
-    gap: 30px;
 }
 
 .logo {
@@ -20,41 +21,76 @@
     gap: 10px;
     font-size: 24px;
     font-weight: 700;
-    color: var(--primary);
+    color: #005a8c;
+    text-decoration: none;
 }
-
-.logo-icon { font-size: 28px; }
 
 .nav {
     display: flex;
+    align-items: center;
     gap: 32px;
-    flex: 1;
-    justify-content: center;
+    height: 100%; /* Quan trọng để menu con căn đúng */
 }
 
 .nav-link {
     font-size: 15px;
-    font-weight: 500;
-    color: var(--dark);
-    padding: 6px 0;
-    position: relative;
+    font-weight: 600;
+    color: #1a2b3c;
+    text-decoration: none;
+    padding: 10px 0;
 }
 
-.nav-link:hover { color: var(--primary); }
-
-.header-actions {
+/* Container của Menu xổ xuống */
+.nav-dropdown {
+    position: relative; /* QUAN TRỌNG: Để neo menu con vào đây */
+    height: 100%;
     display: flex;
     align-items: center;
-    gap: 20px;
 }
 
-.header-phone {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--primary);
+/* Menu xổ xuống (Mega Menu) */
+.mega-menu {
+    position: absolute;
+    top: 100%; /* Hiện ngay dưới Header */
+    left: 0;   /* Căn trái so với chữ Our Tours */
+    width: 800px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border: 1px solid #eee;
+    border-radius: 0 0 8px 8px;
+    display: none; /* Mặc định ẩn */
+    z-index: 999;
 }
 
-.btn-sm { padding: 8px 20px; font-size: 13px; }
+/* Khi hover vào "Our Tours" thì hiện menu */
+.nav-dropdown:hover .mega-menu {
+    display: flex;
+}
+
+/* Nội dung bên trong Mega Menu (bạn có thể đã có sẵn) */
+.mega-sidebar {
+    width: 260px;
+    background: #f8f9fa;
+    border-right: 1px solid #eee;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+.mega-sidebar-item {
+    padding: 12px 20px;
+    color: #1a2b3c;
+    text-decoration: none;
+}
+.mega-sidebar-item:hover, .mega-sidebar-item.active {
+    background: #fff;
+    color: #005a8c;
+    border-left: 4px solid #005a8c;
+}
+.mega-content {
+    flex: 1;
+    padding: 30px;
+    background: #fff;
+}
 
 @media (max-width: 900px) {
     .nav { display: none; }
