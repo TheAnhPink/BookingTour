@@ -1,4 +1,6 @@
-/* ========== HEADER ========== */
+/* ==========================================
+   1. HEADER & NAVIGATION
+   ========================================== */
 .header {
     background: #fff;
     border-bottom: 1px solid #eee;
@@ -40,6 +42,21 @@
     padding: 10px 0;
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-sm {
+    padding: 8px 20px;
+    font-size: 13px;
+}
+
+/* ==========================================
+   2. MEGA MENU (DROPDOWN)
+   ========================================== */
+
 /* Container của Menu xổ xuống */
 .nav-dropdown {
     position: relative; /* QUAN TRỌNG: Để neo menu con vào đây */
@@ -48,7 +65,7 @@
     align-items: center;
 }
 
-/* Menu xổ xuống (Mega Menu) */
+/* Khối Menu xổ xuống */
 .mega-menu {
     position: absolute;
     top: 100%; /* Hiện ngay dưới Header */
@@ -67,7 +84,7 @@
     display: flex;
 }
 
-/* Nội dung bên trong Mega Menu (bạn có thể đã có sẵn) */
+/* Cột bên trái (Sidebar) */
 .mega-sidebar {
     width: 260px;
     background: #f8f9fa;
@@ -76,28 +93,113 @@
     display: flex;
     flex-direction: column;
 }
+
 .mega-sidebar-item {
     padding: 12px 20px;
     color: #1a2b3c;
     text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s;
 }
-.mega-sidebar-item:hover, .mega-sidebar-item.active {
+
+.mega-sidebar-item:hover, 
+.mega-sidebar-item.active {
     background: #fff;
     color: #005a8c;
     border-left: 4px solid #005a8c;
 }
+
+/* Cột bên phải (Content) */
 .mega-content {
     flex: 1;
     padding: 30px;
     background: #fff;
 }
 
-@media (max-width: 900px) {
-    .nav { display: none; }
-    .header-phone { display: none; }
+/* Tiêu đề và 2 nút (Learn More / View All) */
+.mega-content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
 }
+
+.mega-content-header h3 {
+    font-size: 22px;
+    color: #1a2b3c;
+    margin: 0;
+}
+
+.mega-actions {
+    display: flex;
+    gap: 12px; /* Khoảng cách giữa 2 nút */
+}
+
+/* Nút Learn More (Viền xanh đen, nền trắng) */
+.btn-learn-more {
+    background: transparent;
+    color: #1a2b3c;
+    border: 2px solid #1a2b3c;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-learn-more:hover {
+    background: #1a2b3c;
+    color: #fff;
+}
+
+/* Nút View All Tours (Nền xanh lá, chữ trắng) */
+.btn-view-all {
+    background: #14804a;
+    color: #fff;
+    border: 2px solid #14804a;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-view-all:hover {
+    background: #0e5c35;
+    border-color: #0e5c35;
+}
+
+/* Danh sách các châu lục */
+.mega-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Chia làm 2 cột cho đẹp */
+    gap: 12px;
+}
+
+.mega-list a {
+    color: #555;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.mega-list a:hover {
+    color: #005a8c;
+    text-decoration: underline;
+}
+
+/* ==========================================
+   3. FOOTER
+   ========================================== */
 .footer {
-    background: var(--dark);
+    background: #1a2b3c; /* Đã thay biến var(--dark) bằng mã màu để tránh lỗi */
     color: #a8b8c8;
     padding: 60px 0 40px;
 }
@@ -109,24 +211,44 @@
 }
 
 .footer-col h4 {
-    color: var(--white);
+    color: #fff;
     font-size: 16px;
     margin-bottom: 18px;
     font-weight: 600;
 }
 
-.footer-col ul { list-style: none; }
-.footer-col li { margin-bottom: 10px; }
-.footer-col a { font-size: 14px; transition: color 0.2s; }
-.footer-col a:hover { color: var(--white); }
+.footer-col ul { 
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
 
-.footer-col.brand .logo { color: var(--white); margin-bottom: 12px; }
+.footer-col li { margin-bottom: 10px; }
+
+.footer-col a { 
+    font-size: 14px; 
+    color: #a8b8c8;
+    text-decoration: none;
+    transition: color 0.2s; 
+}
+
+.footer-col a:hover { color: #fff; }
+
+.footer-col.brand .logo { color: #fff; margin-bottom: 12px; }
 .footer-col.brand p { font-size: 14px; margin-bottom: 6px; }
 
 .footer-copy {
     margin-top: 20px;
     font-size: 13px;
     opacity: 0.6;
+}
+
+/* ==========================================
+   4. RESPONSIVE
+   ========================================== */
+@media (max-width: 900px) {
+    .nav { display: none; }
+    .header-phone { display: none; }
 }
 
 @media (max-width: 768px) {

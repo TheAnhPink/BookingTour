@@ -1,0 +1,237 @@
+/* ========== BANNER TRANG TOUR ========== */
+.tour-page-banner {
+    background: #005a8c;
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.tour-page-banner h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* ========== LAYOUT TRANG TOUR ========== */
+.tour-layout {
+    display: flex;
+    gap: 40px;
+    padding: 50px 0;
+}
+
+/* --- Cột trái: Bộ lọc --- */
+.tour-filters {
+    width: 260px;
+    flex-shrink: 0;
+}
+
+.tour-filters h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.filter-group {
+    margin-bottom: 30px;
+}
+
+.filter-group h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #1a2b3c;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+}
+
+.filter-group input {
+    margin-right: 10px;
+}
+
+/* --- Cột phải: Danh sách --- */
+.tour-results {
+    flex: 1;
+}
+
+.tour-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.sort-box select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+/* ========== THẺ TOUR NẰM NGANG ========== */
+.tour-list-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tour-card-horizontal {
+    display: flex;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    transition: box-shadow 0.3s;
+}
+
+.tour-card-horizontal:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.tour-card-img {
+    width: 320px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.tour-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tour-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #f4b400;
+    color: #1a2b3c;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.tour-card-info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.tour-card-top {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.tour-title {
+    font-size: 24px;
+    color: #1a2b3c;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.tour-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.stars {
+    color: #f4b400;
+    font-size: 16px;
+}
+
+.rating-score {
+    font-weight: 700;
+    color: #1a2b3c;
+}
+
+.review-count {
+    font-size: 13px;
+    color: #888;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.tour-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.tour-price span {
+    display: block;
+    font-size: 12px;
+    color: #888;
+}
+
+.tour-price strong {
+    font-size: 24px;
+    color: #1a2b3c;
+    font-weight: 700;
+}
+
+.btn-view-tour {
+    background: #005a8c;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-view-tour:hover {
+    background: #00456b;
+}
+
+/* ========== PHÂN TRANG ========== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.page-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.page-btn.active, .page-btn:hover {
+    background: #005a8c;
+    color: #fff;
+    border-color: #005a8c;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .tour-layout { flex-direction: column; }
+    .tour-filters { width: 100%; }
+    .tour-card-horizontal { flex-direction: column; }
+    .tour-card-img { width: 100%; height: 250px; }
+}
