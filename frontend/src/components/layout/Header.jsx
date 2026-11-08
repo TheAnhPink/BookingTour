@@ -26,13 +26,27 @@ export default function Header() {
                                 <a href="#" className="mega-sidebar-item">🌎 North America ›</a>
                                 <a href="#" className="mega-sidebar-item">🌍 Europe ›</a>
                                 <a href="#" className="mega-sidebar-item">🌏 Asia ›</a>
+                                <a href="#" className="mega-sidebar-item">⋯ View All Destinations ›</a>
                             </div>
+                            
+                            {/* Cột bên phải: Tiêu đề + 2 nút + Danh sách */}
                             <div className="mega-content">
-                                <h3>New Tours</h3>
-                                <ul>
+                                <div className="mega-content-header">
+                                    <h3>New Tours</h3>
+                                    <div className="mega-actions">
+                                        <button className="btn-learn-more">Learn More</button>
+                                          <Link to="/find-your-tour" className="btn-view-all" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                                            View All Tours
+                                        </Link>
+                                    </div>
+                                </div>
+                                <ul className="mega-list">
                                     <li><a href="#">Africa</a></li>
                                     <li><a href="#">Antarctica</a></li>
                                     <li><a href="#">Asia</a></li>
+                                    <li><a href="#">Europe</a></li>
+                                    <li><a href="#">North America</a></li>
+                                    <li><a href="#">South America</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -41,7 +55,7 @@ export default function Header() {
                     {/* Các link bình thường */}
                     <a href="#" className="nav-link">Destinations</a>
                     <a href="#" className="nav-link">Ways to Travel</a>
-                    <a href="#" className="nav-link">Deals</a>
+                    <Link to="/deals">Deals</Link>
                 </nav>
 
                 {/* Bên phải */}
