@@ -34,7 +34,7 @@ public class NguoiDung {
     @Column(length = 20)
     private String vaiTro = "CUSTOMER"; // ADMIN / CUSTOMER
 
-    private Boolean trangThai = true;
+    private Boolean trangThai = (Boolean) true;
 
     private LocalDateTime ngayTao = LocalDateTime.now();
 

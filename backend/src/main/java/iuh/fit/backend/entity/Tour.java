@@ -23,7 +23,6 @@ public class Tour {
     @Column(nullable = false, length = 255)
     private String tenTour;
 
-    @Column(columnDefinition = "NVARCHAR(MAX)")
     private String moTa;
 
     @Column(length = 50)
@@ -47,7 +46,7 @@ public class Tour {
     @Column(length = 100)
     private String phongCach;
 
-    private Integer mucDoVanDong = 1;
+    private Integer mucDoVanDong = (Integer) 1;
 
     private String hinhAnhChinh;
 

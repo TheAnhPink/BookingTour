@@ -22,7 +22,6 @@ public class KhuyenMai {
     @Column(nullable = false, length = 255)
     private String tenChuongTrinh;
 
-    @Column(columnDefinition = "NVARCHAR(MAX)")
     private String moTa;
 
     @Column(nullable = false, length = 20)

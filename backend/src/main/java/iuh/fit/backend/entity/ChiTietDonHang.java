@@ -26,9 +26,9 @@ public class ChiTietDonHang {
     @JoinColumn(name = "maLichKhoiHanh", nullable = false)
     private LichKhoiHanh lichKhoiHanh;
 
-    private Integer soLuongNguoiLon = 0;
-    private Integer soLuongTreEm = 0;
-    private Integer soLuongEmBe = 0;
+    private Integer soLuongNguoiLon = (Integer) 0;
+    private Integer soLuongTreEm = (Integer) 0;
+    private Integer soLuongEmBe = (Integer) 0;
 
     @Column(nullable = false, precision = 15, scale = 2)
     private BigDecimal donGiaNguoiLon;

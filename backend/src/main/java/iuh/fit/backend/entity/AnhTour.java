@@ -23,5 +23,5 @@ public class AnhTour {
     @Column(nullable = false)
     private String duongDan;
 
-    private Boolean laAnhChinh = false;
+    private Boolean laAnhChinh = (Boolean) false;
 }

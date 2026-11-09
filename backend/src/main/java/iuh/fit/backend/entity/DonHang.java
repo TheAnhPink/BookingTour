@@ -36,12 +36,10 @@ public class DonHang {
     @Column(length = 50)
     private String trangThai = "PENDING";
 
-    @Column(columnDefinition = "NVARCHAR(MAX)")
     private String ghiChu;
 
     // Thuộc tính hủy tour
     private LocalDateTime ngayHuy;
-    @Column(columnDefinition = "NVARCHAR(MAX)")
     private String lyDoHuy;
     @Column(precision = 15, scale = 2)
     private BigDecimal tienPhatHuy = BigDecimal.ZERO;

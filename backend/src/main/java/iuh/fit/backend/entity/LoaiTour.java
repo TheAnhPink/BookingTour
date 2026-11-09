@@ -15,7 +15,6 @@ public class LoaiTour {
     @Column(nullable = false, length = 100)
     private String tenLoai;
 
-    @Column(columnDefinition = "NVARCHAR(MAX)")
     private String moTa;
 
     @OneToMany(mappedBy = "loaiTour")

@@ -23,7 +23,6 @@ public class LichTrinhTour {
     @Column(nullable = false, length = 255)
     private String tieuDe;
 
-    @Column(columnDefinition = "NVARCHAR(MAX)")
     private String noiDung;
 
     @ManyToOne(fetch = FetchType.LAZY)

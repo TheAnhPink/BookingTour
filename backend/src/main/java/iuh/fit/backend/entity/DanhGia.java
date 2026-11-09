@@ -33,7 +33,6 @@ public class DanhGia {
     @Column(nullable = false)
     private Integer soSao;
 
-    @Column(columnDefinition = "NVARCHAR(MAX)")
     private String binhLuan;
 
     private LocalDateTime ngayTao = LocalDateTime.now();
