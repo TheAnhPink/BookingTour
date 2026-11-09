@@ -1,10 +1,11 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link ,useNavigate} from 'react-router-dom';
 import { mockTourDetail } from '../data/mockTourDetail';
 import '../styles/tourDetail.css';
 
 export default function TourDetail() {
     const { id } = useParams();
-    const tour = mockTourDetail; // Trong thực tế sẽ dùng id để fetch API
+    const tour = mockTourDetail; 
+    const navigate = useNavigate();
 
     return (
         <div className="tour-detail-page">
@@ -129,7 +130,12 @@ export default function TourDetail() {
                     <h2>Ready to Book?</h2>
                     <p>Contact us to reserve your spot on this tour.</p>
                     <div className="cta-buttons">
-                        <button className="btn btn-primary btn-lg">Book Now</button>
+                        <button 
+                            className="btn btn-primary btn-lg" 
+                            onClick={() => navigate(`/booking/${tour.id}`)}
+                        >
+                            Book Now
+                        </button>
                         <button className="btn btn-outline btn-lg">Request a Quote</button>
                     </div>
                 </section>

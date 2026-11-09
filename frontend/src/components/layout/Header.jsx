@@ -55,12 +55,14 @@ export default function Header() {
                     {/* Các link bình thường */}
                     <a href="#" className="nav-link">Destinations</a>
                     <a href="#" className="nav-link">Ways to Travel</a>
-                    <Link to="/deals">Deals</Link>
+                    <a href="#" className="nav-link">Why Collete</a>
+                    <a href="#" className="nav-link">Travel Planning</a>
+                    <Link className="nav-link" to="/deals">Deals</Link>
                 </nav>
 
                 {/* Bên phải */}
                 <div className="header-actions">
-                    <span style={{ marginRight: '15px', fontWeight: 'bold' }}>📞 1-800-123-4567</span>
+                    <span style={{ marginRight: '15px', fontWeight: 'bold' }}>📞 0816969671</span>
                     <a href="#" className="btn btn-outline btn-sm">Sign In</a>
                 </div>
             </div>
