@@ -1,0 +1,286 @@
+/* ========== BOOKING PAGE LAYOUT ========== */
+.booking-page {
+    background-color: #f7f9fa;
+    padding: 40px 0;
+    min-height: 100vh;
+}
+
+.booking-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.booking-main {
+    flex: 1;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.booking-sidebar {
+    width: 380px;
+    position: sticky;
+    top: 100px;
+}
+
+/* ========== HEADER ========== */
+.booking-header {
+    margin-bottom: 30px;
+}
+
+.back-link {
+    color: #005a8c;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.booking-header h1 {
+    font-size: 32px;
+    color: #1a2b3c;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 16px;
+}
+
+/* ========== STEP NAVIGATION TABS ========== */
+.booking-steps-nav {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    gap: 10px;
+}
+
+.step-tab {
+    background: none;
+    border: none;
+    padding: 12px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.step-tab:hover {
+    color: #005a8c;
+}
+
+.step-tab.active {
+    color: #005a8c;
+    border-bottom-color: #005a8c;
+}
+
+/* ========== STEP CONTENT ========== */
+.step-section h2 {
+    font-size: 24px;
+    color: #1a2b3c;
+    margin-bottom: 10px;
+}
+
+.step-desc {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1a2b3c;
+    font-size: 14px;
+}
+
+.form-group select,
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.price-hint {
+    display: block;
+    font-size: 13px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Custom Options (Checkboxes) */
+.custom-option {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.custom-option label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.custom-option p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    padding-left: 24px;
+}
+
+/* Form Row */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Summary Review */
+.summary-review {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.summary-review h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.review-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.review-row.total {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Payment Section */
+.payment-section h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* ========== ACTION BUTTONS ========== */
+.step-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.btn-pay {
+    background-color: #14804a;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.btn-pay:hover {
+    background-color: #0e5c35;
+}
+
+/* ========== SIDEBAR SUMMARY ========== */
+.summary-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.summary-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.summary-details {
+    padding: 20px;
+}
+
+.summary-details h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.summary-meta {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.summary-details hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 15px 0;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.price-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+
+.price-total strong {
+    color: #e74c3c;
+    font-size: 22px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .booking-layout {
+        flex-direction: column;
+    }
+    .booking-sidebar {
+        width: 100%;
+        position: static;
+        order: -1; /* Đưa summary lên trên */
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

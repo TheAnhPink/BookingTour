@@ -21,7 +21,7 @@ public class DonHang {
 
     @NotNull @DecimalMin("0.0")
     @Column(name = "tongTien", nullable = false, precision = 15, scale = 2)
-    private BigDecimal tongTien; // Đã khôi phục
+    private BigDecimal tongTien;
 
     @DecimalMin("0.0")
     @Column(name = "tienGiam", precision = 15, scale = 2)

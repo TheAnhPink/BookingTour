@@ -35,12 +35,11 @@ public class LichKhoiHanh {
     @Column(name = "trangThai", length = 50)
     private TrangThaiLichKhoiHanh trangThai;
 
-    // --- MỐI QUAN HỆ ---
+    // --mối quan hệ
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "maTour", nullable = false)
     private Tour tour;
 
-    // THÊM MỚI: Lịch khởi hành này ở khách sạn nào
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "maKhachSan", nullable = false)
     private KhachSan khachSan;

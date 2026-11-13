@@ -64,7 +64,7 @@ public class Tour {
     @Column(name = "trangThai", length = 20)
     private TrangThaiTour trangThai;
 
-    // --- MỐI QUAN HỆ ---
+    // moi quan he
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "maLoaiTour", nullable = false)
     private LoaiTour loaiTour;
