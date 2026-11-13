@@ -1,48 +1,68 @@
 package iuh.fit.backend.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
-@Table(name = "NguoiDung")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Table(name="NguoiDung")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class NguoiDung {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer maNguoiDung;
+    private Long maNguoiDung;
 
+    @NotBlank(message = "Họ tên không được để trống")
+    @Size(min = 2, max = 100, message = "Họ tên phải từ 2 đến 100 ký tự")
+    @Pattern(regexp = "^[\\p{L}\\s]+$",message = "Họ tên chỉ được chứa chữ và khoảng trắng")
     @Column(nullable = false, length = 100)
     private String hoTen;
 
-    @Column(nullable = false, unique = true, length = 100)
+    @NotBlank(message = "Email không được để trống")
+    @Column(nullable = false, unique = true)
+    @Email(message = "Email không đúng định dạng")
     private String email;
 
+    @NotBlank(message = "Mật khẩu không được để trống")
     @Column(nullable = false)
+    @Size(min = 8, message = "Mật khẩu phải từ 8 ký tự trở lên")
     private String matKhau;
 
-    @Column(length = 20)
+    @NotBlank(message = "Số điện thoại không được để trống")
+    @Pattern(regexp = "^0[0-9]{9}$", message = "SĐT phải gồm 10 số và bắt đầu bằng 0")
+    @Column(unique = true, length = 20, nullable = false)
     private String soDienThoai;
 
+    @NotNull(message = "Ngày sinh không được để trống")
+    @Past(message = "Ngày sinh phải trước ngày hiện tại")
     private LocalDate ngaySinh;
 
-    @Column(length = 50)
+    @NotBlank(message = "CCCD/Hộ chiếu không được để trống")
+    @Pattern(regexp = "^[0-9]{12}$|^[A-Z][0-9]{7,8}$", message = "CCCD 12 số hoặc Hộ chiếu không đúng định dạng")
+    @Column(nullable = false,length = 20)
     private String cccdHoChieu;
 
-    @Column(length = 20)
-    private String vaiTro = "CUSTOMER"; // ADMIN / CUSTOMER
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    @NotNull
+    private VaiTro vaiTro;
 
-    private Boolean trangThai = true;
+    private boolean trangThai=true;
 
-    private LocalDateTime ngayTao = LocalDateTime.now();
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDate ngayTao;
 
-    // Mối quan hệ với Đơn Hàng
-    @OneToMany(mappedBy = "nguoiDung", cascade = CascadeType.ALL)
-    private List<DonHang> danhSachDonHang;
 
-    // Mối quan hệ với Đánh Giá
-    @OneToMany(mappedBy = "nguoiDung", cascade = CascadeType.ALL)
-    private List<DanhGia> danhSachDanhGia;
+    @AssertTrue(message = "Người dùng phải từ đủ 18 tuổi trở lên")
+    public boolean isDu18Tuoi() {
+        if (ngaySinh == null) return true;
+        return java.time.Period.between(ngaySinh, LocalDate.now()).getYears() >= 18;
+    }
 }

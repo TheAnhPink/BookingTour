@@ -1,7 +1,7 @@
 package iuh.fit.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,28 +12,51 @@ import java.util.List;
 public class LichKhoiHanh {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer maLichKhoiHanh;
+    @Column(name = "maLichKhoiHanh")
+    private Long maLichKhoiHanh;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "maTour", nullable = false)
-    @JsonIgnore
-    private Tour tour;
-
-    @Column(nullable = false)
+    @NotNull @Future
+    @Column(name = "ngayKhoiHanh", nullable = false)
     private LocalDateTime ngayKhoiHanh;
 
-    @Column(nullable = false)
+    @NotNull
+    @Column(name = "ngayKetThuc", nullable = false)
     private LocalDateTime ngayKetThuc;
 
-    @Column(nullable = false)
+    @NotNull @Min(1)
+    @Column(name = "soChoToiDa", nullable = false)
     private Integer soChoToiDa;
 
-    @Column(nullable = false)
+    @NotNull @Min(0)
+    @Column(name = "soChoConLai", nullable = false)
     private Integer soChoConLai;
 
-    @Column(length = 20)
-    private String trangThai = "OPEN";
+    @Enumerated(EnumType.STRING)
+    @Column(name = "trangThai", length = 50)
+    private TrangThaiLichKhoiHanh trangThai;
+
+    // --- MỐI QUAN HỆ ---
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "maTour", nullable = false)
+    private Tour tour;
+
+    // THÊM MỚI: Lịch khởi hành này ở khách sạn nào
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "maKhachSan", nullable = false)
+    private KhachSan khachSan;
 
     @OneToMany(mappedBy = "lichKhoiHanh")
-    private List<ChiTietDonHang> danhSachChiTietDonHang;
+    private List<ChiTietDonHang> chiTietDonHangs;
+
+    @AssertTrue(message = "Ngày kết thúc phải sau ngày khởi hành")
+    public boolean isNgayKetThucHopLe() {
+        if (ngayKhoiHanh == null || ngayKetThuc == null) return true;
+        return ngayKetThuc.isAfter(ngayKhoiHanh);
+    }
+
+    @AssertTrue(message = "Số chỗ còn lại không được vượt quá số chỗ tối đa")
+    public boolean isSoChoHopLe() {
+        if (soChoToiDa == null || soChoConLai == null) return true;
+        return soChoConLai >= 0 && soChoConLai <= soChoToiDa;
+    }
 }

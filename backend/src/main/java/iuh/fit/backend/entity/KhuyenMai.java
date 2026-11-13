@@ -1,46 +1,69 @@
 package iuh.fit.backend.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "KhuyenMai")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class KhuyenMai {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer maKhuyenMai;
+    @Column(name = "maKhuyenMai")
+    private Long maKhuyenMai;
 
-    @Column(nullable = false, unique = true, length = 50)
-    private String maCode;
-
-    @Column(nullable = false, length = 255)
+    @NotBlank @Size(min = 5, max = 150)
+    @Column(name = "tenChuongTrinh", nullable = false, length = 150)
     private String tenChuongTrinh;
 
-    @Column(columnDefinition = "NVARCHAR(MAX)")
+    @Size(max = 1000)
+    @Column(name = "moTa", length = 1000)
     private String moTa;
 
-    @Column(nullable = false, length = 20)
-    private String loaiGiamGia; // PERCENT / FIXED_AMOUNT
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    @Column(name = "loaiGiamGia", nullable = false, length = 20)
+    private LoaiGiamGia loaiGiamGia;
 
-    @Column(nullable = false, precision = 15, scale = 2)
+    @NotNull @DecimalMin(value = "0.0", inclusive = false)
+    @Column(name = "giaTriGiam", nullable = false, precision = 15, scale = 2)
     private BigDecimal giaTriGiam;
 
-    @Column(precision = 15, scale = 2)
+    @DecimalMin(value = "0.0")
+    @Column(name = "giamToiDa", precision = 15, scale = 2)
     private BigDecimal giamToiDa;
 
-    @Column(nullable = false)
+    @NotNull @FutureOrPresent
+    @Column(name = "ngayBatDau", nullable = false)
     private LocalDateTime ngayBatDau;
 
-    @Column(nullable = false)
+    @NotNull @Future
+    @Column(name = "ngayKetThuc", nullable = false)
     private LocalDateTime ngayKetThuc;
 
+    @NotNull @Min(1)
+    @Column(name = "soLuongToiDa", nullable = false)
     private Integer soLuongToiDa;
+
+    @Min(0)
+    @Column(name = "soLuongDaDung")
     private Integer soLuongDaDung = 0;
+
+    @Column(name = "trangThai")
     private Boolean trangThai = true;
+
+    @OneToMany(mappedBy = "khuyenMai")
+    private List<DonHang> donHangs;
+
+    @AssertTrue(message = "Giá trị giảm theo phần trăm không được vượt quá 100")
+    public boolean isGiaTriGiamHopLe() {
+        if (loaiGiamGia == LoaiGiamGia.PHAN_TRAM && giaTriGiam != null) {
+            return giaTriGiam.compareTo(new BigDecimal("100")) <= 0;
+        }
+        return true;
+    }
 }

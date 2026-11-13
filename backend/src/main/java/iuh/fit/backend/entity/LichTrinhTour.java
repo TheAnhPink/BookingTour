@@ -1,7 +1,7 @@
 package iuh.fit.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Entity
@@ -10,23 +10,22 @@ import lombok.*;
 public class LichTrinhTour {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer maLichTrinh;
+    @Column(name = "maLichTrinh")
+    private Long maLichTrinh;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "maTour", nullable = false)
-    @JsonIgnore
-    private Tour tour;
-
-    @Column(nullable = false)
+    @NotNull @Min(1)
+    @Column(name = "ngayThu", nullable = false)
     private Integer ngayThu;
 
-    @Column(nullable = false, length = 255)
+    @NotBlank @Size(min = 5, max = 255)
+    @Column(name = "tieuDe", nullable = false, length = 255)
     private String tieuDe;
 
-    @Column(columnDefinition = "NVARCHAR(MAX)")
+    @NotBlank @Size(max = 4000)
+    @Column(name = "noiDung", nullable = false, length = 4000)
     private String noiDung;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "maKhachSan")
-    private KhachSan khachSan;
+    @JoinColumn(name = "maTour", nullable = false)
+    private Tour tour;
 }
