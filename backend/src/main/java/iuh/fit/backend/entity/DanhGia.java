@@ -14,15 +14,16 @@ public class DanhGia {
     @Column(name = "maDanhGia")
     private Long maDanhGia;
 
-    @NotNull @Min(1) @Max(5)
+    @NotNull(message = "Số sao không được để trống")
+    @Min(value = 1, message = "Số sao từ 1 đến 5") @Max(value = 5, message = "Số sao từ 1 đến 5")
     @Column(name = "soSao", nullable = false)
     private Integer soSao;
 
-    @Size(max = 1000)
-    @Column(name = "binhLuan", length = 1000)
+    @Size(max = 1000, message = "Bình luận tối đa 1000 ký tự")
+    @Column(name = "binhLuan", length = 2000)
     private String binhLuan;
 
-    @PastOrPresent
+    @PastOrPresent(message = "Ngày tạo không được lớn hơn hiện tại")
     @Column(name = "ngayTao")
     private LocalDate ngayTao;
 
@@ -37,4 +38,9 @@ public class DanhGia {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "maDonHang", nullable = false)
     private DonHang donHang;
+
+    public String chuanHoaBinhLuan() {
+        if (this.binhLuan == null) return "";
+        return this.binhLuan.trim().replaceAll("\\s+", " ");
+    }
 }

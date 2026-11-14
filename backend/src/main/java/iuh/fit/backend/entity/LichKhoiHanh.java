@@ -15,19 +15,22 @@ public class LichKhoiHanh {
     @Column(name = "maLichKhoiHanh")
     private Long maLichKhoiHanh;
 
-    @NotNull @Future
+    @NotNull(message = "Ngày khởi hành không được để trống")
+    @Future(message = "Ngày khởi hành phải lớn hơn hiện tại")
     @Column(name = "ngayKhoiHanh", nullable = false)
     private LocalDateTime ngayKhoiHanh;
 
-    @NotNull
+    @NotNull(message = "Ngày kết thúc không được để trống")
     @Column(name = "ngayKetThuc", nullable = false)
     private LocalDateTime ngayKetThuc;
 
-    @NotNull @Min(1)
+    @NotNull(message = "Số chỗ tối đa không được để trống")
+    @Min(value = 1, message = "Số chỗ tối đa phải lớn hơn 0")
     @Column(name = "soChoToiDa", nullable = false)
     private Integer soChoToiDa;
 
-    @NotNull @Min(0)
+    @NotNull(message = "Số chỗ còn lại không được để trống")
+    @Min(value = 0, message = "Số chỗ còn lại không được âm")
     @Column(name = "soChoConLai", nullable = false)
     private Integer soChoConLai;
 
@@ -35,7 +38,6 @@ public class LichKhoiHanh {
     @Column(name = "trangThai", length = 50)
     private TrangThaiLichKhoiHanh trangThai;
 
-    // --mối quan hệ
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "maTour", nullable = false)
     private Tour tour;
@@ -57,5 +59,27 @@ public class LichKhoiHanh {
     public boolean isSoChoHopLe() {
         if (soChoToiDa == null || soChoConLai == null) return true;
         return soChoConLai >= 0 && soChoConLai <= soChoToiDa;
+    }
+
+    public boolean kiemTraConCho(int soLuongKhach) {
+        if (soLuongKhach <= 0) return false;
+        return this.soChoConLai >= soLuongKhach && this.trangThai == TrangThaiLichKhoiHanh.DANG_MO_BAN;
+    }
+
+    public void giamSoChoConLai(int soLuongDat) {
+        if (soLuongDat <= 0 || this.soChoConLai < soLuongDat) {
+            throw new IllegalArgumentException("Số chỗ trống còn lại không đủ!");
+        }
+        this.soChoConLai -= soLuongDat;
+        if (this.soChoConLai == 0) {
+            this.trangThai = TrangThaiLichKhoiHanh.HET_CHO;
+        }
+    }
+
+    public void hoanTraSoChoConLai(int soLuongHuy) {
+        if (soLuongHuy <= 0) throw new IllegalArgumentException("Số lượng hủy không hợp lệ!");
+        this.soChoConLai += soLuongHuy;
+        if (this.soChoConLai > this.soChoToiDa) this.soChoConLai = this.soChoToiDa;
+        if (this.trangThai == TrangThaiLichKhoiHanh.HET_CHO) this.trangThai = TrangThaiLichKhoiHanh.DANG_MO_BAN;
     }
 }
