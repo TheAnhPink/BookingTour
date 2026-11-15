@@ -1,0 +1,243 @@
+/* ==========================================
+   BIẾN & RESET CƠ BẢN
+   ========================================== */
+:root {
+    --admin-sidebar-bg: #1e293b; /* Xanh đen */
+    --admin-sidebar-hover: #334155;
+    --admin-primary: #3b82f6; /* Xanh dương */
+    --admin-bg: #f4f7f6;
+    --admin-text-main: #1e293b;
+    --admin-text-muted: #64748b;
+    --sidebar-width: 260px;
+    --sidebar-width-collapsed: 80px;
+}
+
+.admin-layout {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: var(--admin-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ==========================================
+   1. SIDEBAR
+   ========================================== */
+.admin-sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--admin-sidebar-bg);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+    z-index: 100;
+}
+
+.sidebar-closed .admin-sidebar {
+    width: var(--sidebar-width-collapsed);
+}
+
+.sidebar-header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #334155;
+}
+
+.admin-logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    overflow-y: auto;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-item:hover {
+    background-color: var(--admin-sidebar-hover);
+    color: #fff;
+}
+
+.nav-item.active {
+    background-color: var(--admin-primary);
+    color: #fff;
+    border-left: 4px solid #60a5fa;
+}
+
+.nav-icon {
+    font-size: 18px;
+    min-width: 30px;
+}
+
+.sidebar-closed .nav-text {
+    display: none;
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid #334155;
+}
+
+.btn-back-home {
+    color: #94a3b8;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.btn-back-home:hover {
+    color: #fff;
+}
+
+.sidebar-closed .btn-back-home span:last-child {
+    display: none;
+}
+
+/* ==========================================
+   2. MAIN CONTENT & TOPBAR
+   ========================================== */
+.admin-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.admin-topbar {
+    height: 70px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 90;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-toggle-sidebar {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--admin-text-main);
+    padding: 5px;
+}
+
+.page-title {
+    font-size: 20px;
+    color: var(--admin-text-main);
+    margin: 0;
+    font-weight: 600;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: var(--admin-primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.admin-name {
+    font-weight: 600;
+    color: var(--admin-text-main);
+    font-size: 15px;
+}
+
+.btn-logout-topbar {
+    background: #fee2e2;
+    border: none;
+    color: #ef4444;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-logout-topbar:hover {
+    background: #fca5a5;
+}
+
+/* ==========================================
+   3. NỘI DUNG TRANG (PAGES)
+   ========================================== */
+.admin-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+/* Responsive cho Mobile */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        position: absolute;
+        height: 100%;
+        transform: translateX(-100%);
+    }
+    
+    .sidebar-open .admin-sidebar {
+        transform: translateX(0);
+    }
+    
+    .sidebar-closed .admin-sidebar {
+        transform: translateX(-100%);
+        width: var(--sidebar-width);
+    }
+
+    .admin-name {
+        display: none;
+    }
+}
