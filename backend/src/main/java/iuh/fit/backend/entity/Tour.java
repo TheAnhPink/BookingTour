@@ -20,6 +20,11 @@ public class Tour {
     @Column(name = "tenTour", nullable = false, length = 255)
     private String tenTour;
 
+    @NotBlank(message = "Điểm đến không được để trống")
+    @Size(max = 100, message = "Điểm đến tối đa 100 ký tự")
+    @Column(name = "diemDen", nullable = false, length = 255)
+    private String diemDen;
+
     @Size(max = 4000, message = "Mô tả tối đa 4000 ký tự")
     @Column(name = "moTa", columnDefinition = "TEXT")
     private String moTa;
