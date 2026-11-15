@@ -77,6 +77,7 @@ export default function App() {
 
                 {/* ==========================================
                     KHU VỰC ADMIN (Chỉ có Sidebar & Topbar riêng)
+                    Cach test: http://localhost:5173/admin
                 ========================================== */}
                 <Route path="/admin" element={<AdminLayout />}>
                     <Route index element={<AdminDashboard />} />
