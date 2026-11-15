@@ -1,0 +1,280 @@
+/* ==========================================
+   1. HERO SECTION (Ảnh bìa)
+   ========================================== */
+.style-hero {
+    position: relative;
+    height: 60vh;
+    min-height: 480px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end; /* Đẩy nội dung xuống dưới */
+    color: #fff;
+}
+
+.style-hero .hero-overlay {
+    width: 100%;
+    padding: 60px 0 40px 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+}
+
+.style-hero h1 {
+    font-size: 52px;
+    margin-bottom: 15px;
+    max-width: 900px;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.style-hero .hero-tagline {
+    font-size: 20px;
+    opacity: 0.95;
+    max-width: 800px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+/* ==========================================
+   2. QUICK INFO BAR (Thanh thông tin nhanh)
+   ========================================== */
+.quick-info-bar {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 20px 0;
+    position: sticky;
+    top: 80px; /* Bám dưới Header */
+    z-index: 50;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.quick-info-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #888;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.info-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a2b3c;
+}
+
+/* ==========================================
+   3. FEATURES SECTION (Tại sao chọn chúng tôi)
+   ========================================== */
+.style-features {
+    background: #f8f9fa;
+    padding: 70px 0;
+}
+
+.style-features h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 45px;
+    color: #1a2b3c;
+    font-weight: 700;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 35px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #1a2b3c;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.feature-card p {
+    font-size: 14.5px;
+    color: #6b7b8a;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   4. MOMENTS SECTION (Khoảnh khắc đáng nhớ)
+   ========================================== */
+.style-moments {
+    background: #fff;
+    padding: 70px 0;
+}
+
+.style-moments h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 45px;
+    color: #1a2b3c;
+    font-weight: 700;
+}
+
+.moments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.moment-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.moment-card:hover {
+    transform: translateY(-5px);
+}
+
+.moment-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.moment-card:hover img {
+    transform: scale(1.05);
+}
+
+.moment-info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.moment-duration {
+    display: inline-block;
+    align-self: flex-start;
+    background: #f4b400; /* Màu vàng Gold */
+    color: #1a2b3c;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.moment-info h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+    color: #1a2b3c;
+    font-weight: 700;
+}
+
+.moment-info p {
+    font-size: 14.5px;
+    color: #6b7b8a;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   5. CTA SECTION (Kêu gọi hành động)
+   ========================================== */
+.style-cta {
+    background: #005a8c; /* Màu xanh chủ đạo */
+    color: #fff;
+    padding: 80px 0;
+}
+
+.style-cta h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.style-cta p {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+.style-cta .btn-primary {
+    background: #fff;
+    color: #005a8c;
+    padding: 16px 45px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 40px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.style-cta .btn-primary:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ==========================================
+   6. RESPONSIVE (Giao diện trên Mobile)
+   ========================================== */
+@media (max-width: 992px) {
+    .style-hero h1 { font-size: 42px; }
+    .quick-info-grid { gap: 20px; }
+}
+
+@media (max-width: 768px) {
+    .style-hero { min-height: 400px; }
+    .style-hero h1 { font-size: 32px; }
+    .style-hero .hero-tagline { font-size: 16px; }
+    
+    .quick-info-bar { position: static; }
+    .quick-info-grid { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 15px; 
+    }
+    
+    .style-features h2,
+    .style-moments h2,
+    .style-cta h2 { font-size: 26px; }
+    
+    .style-cta { padding: 50px 0; }
+}

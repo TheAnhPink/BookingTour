@@ -254,3 +254,89 @@
 @media (max-width: 768px) {
     .footer-grid { grid-template-columns: 1fr 1fr; }
 }
+/* ========== TÙY CHỈNH CHO MEGA MENU TRAVEL PLANNING ========== */
+
+/* Ép danh sách bên phải thành 1 cột dọc */
+.mega-list.single-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Khoảng cách giữa các dòng */
+}
+
+.mega-list.single-col a {
+    color: #555;
+    font-size: 15px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.mega-list.single-col a:hover {
+    color: #005a8c; /* Màu xanh chủ đạo */
+    text-decoration: underline;
+}
+
+/* Nếu muốn menu xổ xuống rộng hơn một chút cho cân đối */
+.nav-dropdown:hover .mega-menu {
+    display: flex;
+    width: 750px; /* Có thể tăng giảm tùy ý */
+}
+/* ========== TÙY CHỈNH CHO MEGA MENU WHY COLLETTE ========== */
+
+/* Cột bên trái co lại vừa đủ nếu chỉ có 1 mục */
+.nav-dropdown:hover .mega-menu.why-collette-menu {
+    width: 800px;
+}
+
+/* Làm đẹp nút Learn More trong mega menu (nếu chưa có) */
+.btn-learn-more {
+    background: transparent;
+    color: #1a2b3c;
+    border: 2px solid #1a2b3c;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-learn-more:hover {
+    background: #1a2b3c;
+    color: #fff;
+}
+
+/* Ẩn gạch chân mặc định của thẻ a khi dùng làm nút */
+.mega-actions a.btn-learn-more {
+    text-decoration: none;
+    display: inline-block;
+}
+/* ========== TÙY CHỈNH CHO MEGA MENU WAYS TO TRAVEL ========== */
+
+/* Chia danh sách thành 2 cột */
+.mega-list-two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 cột bằng nhau */
+    column-gap: 30px;
+    row-gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mega-list-two-cols a {
+    color: #555;
+    font-size: 15px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.mega-list-two-cols a:hover {
+    color: #005a8c; /* Màu xanh chủ đạo */
+    text-decoration: underline;
+}
+
+/* Tùy chỉnh kích thước khung menu cho cân đối với 2 cột */
+.nav-dropdown:hover .mega-menu {
+    width: 700px; 
+}
