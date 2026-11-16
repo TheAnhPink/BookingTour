@@ -12,7 +12,9 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public interface TourRepository extends JpaRepository<Tour,Long> {
-    @Query("select DISTINCT t from Tour t left join t.lichKhoiHanhs l " +
+    @Query("select DISTINCT t from Tour t " +
+            "left join fetch t.loaiTour lt " +
+            "left join t.lichKhoiHanhs l " +
             "where t.trangThai = 'HOAT_DONG' " +
             "and (:tenTim is null or (lower(t.tenTour) like lower(concat('%',:tenTim,'%')) or (lower(t.diemDen) like lower((concat('%',:tenTim,'%') )) ) ) ) "+
             "and (:maLoaiTim is null or t.loaiTour.maLoaiTour= :maLoaiTim) " +
