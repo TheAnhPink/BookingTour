@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Optional;
 
 public interface TourRepository extends JpaRepository<Tour,Long> {
     @Query("select DISTINCT t from Tour t " +
@@ -30,4 +31,6 @@ public interface TourRepository extends JpaRepository<Tour,Long> {
                                   @Param("ngayKT") LocalDate ngayKT,
                                   Pageable pageable
                                   );
+
+    Optional<Tour> findFirstByHinhAnhChinhIsNotNullOrderByMaTourDesc();
 }

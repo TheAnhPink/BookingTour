@@ -13,7 +13,7 @@ export default function FeaturedTours() {
                 <div className="section-header">
                     <div>
                         <h2>Featured Tours</h2>
-                        <p>Inspire your next journey with hand-picked tours travelers love.</p>
+                        <p>Hand-picked journeys that travelers like you love.</p>
                     </div>
                     <a href="#" className="see-all">View All Tours →</a>
                 </div>
